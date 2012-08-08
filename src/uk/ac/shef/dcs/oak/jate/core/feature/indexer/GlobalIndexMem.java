@@ -19,17 +19,45 @@ import java.util.*;
  * term's canonical form to its variants found in the corpus,  a document to its id,
  * a lexical unit id to the document ids that contain the unit, a document id to the lexical unit ids which the document
  * contains.
+ * <p/>
+ * <br>Also credits to <b>pmclachlan@gmail.com</b> for revision for performance tweak </br>
  *
  * @author <a href="mailto:z.zhang@dcs.shef.ac.uk">Ziqi Zhang</a>
  */
 
 
-
 public class GlobalIndexMem extends GlobalIndex {
 
+    /**
+     * Term to TermId map
+     */
     protected HashMap<String, Integer> _termIdMap = new HashMap<String, Integer>();
+
+    /**
+     * TermId to Term map (array index is TermID)
+     */
+    protected ArrayList<String> _terms = new ArrayList<String>();
+
+    /**
+     * Variant to VariantId map
+     */
     protected HashMap<String, Integer> _variantIdMap = new HashMap<String, Integer>();
+
+    /**
+     * VariantId to Variant map (array index is VariantID)
+     */
+    protected ArrayList<String> _variants = new ArrayList<String>();
+
+    /**
+     * Document to DocumentId map
+     */
     protected HashMap<Document, Integer> _docIdMap = new HashMap<Document, Integer>();
+
+    /**
+     * DocumentId to Document map (array index is DocumentID)
+     */
+    protected ArrayList<Document> _documents = new ArrayList<Document>();
+
 
     protected Map<Integer, Set<Integer>> _term2Docs = new HashMap<Integer, Set<Integer>>();
     protected Map<Integer, Set<Integer>> _doc2Terms = new HashMap<Integer, Set<Integer>>();
@@ -39,25 +67,31 @@ public class GlobalIndexMem extends GlobalIndex {
     protected GlobalIndexMem() {
     }
 
-    public Map<String, Integer> getTermIdMap(){
+    public Map<String, Integer> getTermIdMap() {
         return _termIdMap;
     }
-    public Map<String, Integer> getVariantIdMap(){
+
+    public Map<String, Integer> getVariantIdMap() {
         return _variantIdMap;
     }
-    public Map<Document, Integer> getDocIdMap(){
+
+    public Map<Document, Integer> getDocIdMap() {
         return _docIdMap;
     }
-    public Map<Integer, Set<Integer>> getTerm2Docs(){
+
+    public Map<Integer, Set<Integer>> getTerm2Docs() {
         return _term2Docs;
     }
-    public Map<Integer, Set<Integer>> getDoc2Terms(){
+
+    public Map<Integer, Set<Integer>> getDoc2Terms() {
         return _doc2Terms;
     }
-    public Map<Integer, Set<Integer>> getTerm2Variants(){
+
+    public Map<Integer, Set<Integer>> getTerm2Variants() {
         return _term2Variants;
     }
-    public Map<Integer, Integer> getVariant2Term(){
+
+    public Map<Integer, Integer> getVariant2Term() {
         return _variant2term;
     }
 
@@ -70,7 +104,11 @@ public class GlobalIndexMem extends GlobalIndex {
      */
     protected int indexTermCanonical(String term) {
         Integer index = _termIdMap.get(term);
-        if (index == null) _termIdMap.put(term, index = _termCounter++);
+        //if (index == null) _termIdMap.put(term, index = _termCounter++);
+        if (index == null) {
+            _termIdMap.put(term, index = _termCounter++);
+            _terms.add(term);
+        }
         return index;
     }
 
@@ -93,10 +131,12 @@ public class GlobalIndexMem extends GlobalIndex {
      * @return
      */
     public String retrieveTermCanonical(int id) {
-        for (Map.Entry<String, Integer> en : _termIdMap.entrySet()) {
+        /*for (Map.Entry<String, Integer> en : _termIdMap.entrySet()) {
             if (en.getValue() == id) return en.getKey();
         }
-        return null;
+        return null;*/
+
+        return _terms.get(id);
     }
 
     /**
@@ -121,7 +161,13 @@ public class GlobalIndexMem extends GlobalIndex {
      */
     protected int indexTermVariant(String termV) {
         Integer index = _variantIdMap.get(termV);
-        if (index == null) _variantIdMap.put(termV, index = _variantCounter++);
+
+        //if (index == null) _variantIdMap.put(termV, index = _variantCounter++);
+        if (index == null) {
+            index = _variantCounter++;
+            _variantIdMap.put(termV, index);
+            _variants.add(termV);
+        }
         return index;
     }
 
@@ -132,10 +178,11 @@ public class GlobalIndexMem extends GlobalIndex {
      * @return
      */
     protected String retrieveTermVariant(int id) {
-        for (Map.Entry<String, Integer> en : _variantIdMap.entrySet()) {
+        /*for (Map.Entry<String, Integer> en : _variantIdMap.entrySet()) {
             if (en.getValue() == id) return en.getKey();
         }
-        return null;
+        return null;*/
+        return _variants.get(id);
     }
 
     public Set<Integer> getTermVariantIds() {
@@ -154,7 +201,11 @@ public class GlobalIndexMem extends GlobalIndex {
      */
     protected int indexDocument(Document d) {
         Integer index = _docIdMap.get(d);
-        if (index == null) _docIdMap.put(d, index = _docCounter++);
+        //if (index == null) _docIdMap.put(d, index = _docCounter++);
+        if (index == null) {
+            _docIdMap.put(d, index = _docCounter++);
+            _documents.add(d);
+        }
         return index;
     }
 
@@ -177,10 +228,11 @@ public class GlobalIndexMem extends GlobalIndex {
      * @return
      */
     public Document retrieveDocument(int id) {
-        for (Map.Entry<Document, Integer> en : _docIdMap.entrySet()) {
-            if (en.getValue() == id) return en.getKey();
-        }
-        return null;
+        //          for (Map.Entry<Document, Integer> en : _docIdMap.entrySet()) {
+        //        if (en.getValue() == id) return en.getKey();
+        //      }
+//        return null;
+        return _documents.get(id);
     }
 
     /**

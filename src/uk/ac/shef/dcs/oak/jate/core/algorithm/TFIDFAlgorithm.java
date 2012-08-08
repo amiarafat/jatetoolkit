@@ -11,6 +11,8 @@ import java.util.Arrays;
  * An implementation of the tf-idf algorithm applied to term recognition algorithm.
  *
  * @author <a href="mailto:z.zhang@dcs.shef.ac.uk">Ziqi Zhang</a>
+ *
+ *  <br>Also credits to <b>pmclachlan@gmail.com</b> for revision for performance tweak </br>
  */
 
 
@@ -21,13 +23,15 @@ public class TFIDFAlgorithm implements Algorithm {
 		TFIDFFeatureWrapper tfidfFeatureStore = (TFIDFFeatureWrapper) store;
 		Set<Term> result = new HashSet<Term>();
 
+        double totalDocs = (double) tfidfFeatureStore.getTotalDocs();
+
 		for(String s: tfidfFeatureStore.getTerms()){
 /*			if(tfidfFeatureStore.getTermFreq(s)==0 || tfidfFeatureStore.getDocFreq(s)==0){
 				System.out.println("ZERO: "+s+"-tf:"+tfidfFeatureStore.getTermFreq(s)+", df:"+tfidfFeatureStore.getDocFreq(s));
 			}*/
 			double tf =  (double)tfidfFeatureStore.getTermFreq(s)/((double) tfidfFeatureStore.getTotalTermFreq()+1.0);
 			double df_i =  (double)tfidfFeatureStore.getDocFreq(s) ==0?1:(double)tfidfFeatureStore.getDocFreq(s);
-			double idf = Math.log((double)tfidfFeatureStore.getTotalDocs()/df_i);
+			double idf = Math.log(totalDocs /df_i);
 			result.add(new Term(s,tf*idf));
 		}
 
