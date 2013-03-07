@@ -4,6 +4,7 @@
     <list default="true" readonly="true" id="3de03060-5498-4eac-8d0f-a10d9c2f10a8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jate_build.xml" afterPath="$PROJECT_DIR$/jate_build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java" />
@@ -522,12 +523,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jate_build" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.AlgorithmTester">

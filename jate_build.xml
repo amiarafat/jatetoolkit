@@ -91,19 +91,6 @@
     <pathelement location="${basedir}/libs/apache-opennlp-1.51/opennlp-maxent-3.0.1-incubating.jar"/>
     <pathelement location="${basedir}/libs/apache-opennlp-1.51/opennlp-tools-1.5.1-incubating.jar"/>
   </path>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <pathelement location="${javac2.home}/javac2.jar"/>
-    <pathelement location="${javac2.home}/jdom.jar"/>
-    <pathelement location="${javac2.home}/asm.jar"/>
-    <pathelement location="${javac2.home}/asm-commons.jar"/>
-    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
-  </target>
   
   <!-- Modules -->
   
@@ -178,15 +165,15 @@
   
   <target name="compile.module.jate_googlecode" depends="compile.module.jate_googlecode.production,compile.module.jate_googlecode.tests" description="Compile module Jate_googlecode"/>
   
-  <target name="compile.module.jate_googlecode.production" depends="register.custom.compilers" description="Compile module Jate_googlecode; production classes">
+  <target name="compile.module.jate_googlecode.production" description="Compile module Jate_googlecode; production classes">
     <mkdir dir="${jate_googlecode.output.dir}"/>
-    <javac2 destdir="${jate_googlecode.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jate_googlecode}/javac">
+    <javac destdir="${jate_googlecode.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jate_googlecode}/javac">
       <compilerarg line="${compiler.args.jate_googlecode}"/>
       <bootclasspath refid="jate_googlecode.module.bootclasspath"/>
       <classpath refid="jate_googlecode.module.production.classpath"/>
       <src refid="jate_googlecode.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.jate_googlecode"/>
-    </javac2>
+    </javac>
     
     <copy todir="${jate_googlecode.output.dir}">
       <fileset dir="${module.jate_googlecode.basedir}/src">
@@ -196,7 +183,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.jate_googlecode.tests" depends="register.custom.compilers,compile.module.jate_googlecode.production" description="compile module Jate_googlecode; test classes" unless="skip.tests"/>
+  <target name="compile.module.jate_googlecode.tests" depends="compile.module.jate_googlecode.production" description="compile module Jate_googlecode; test classes" unless="skip.tests"/>
   
   <target name="clean.module.jate_googlecode" description="cleanup module">
     <delete dir="${jate_googlecode.output.dir}"/>
