@@ -19,15 +19,17 @@ public class RIDFAlgorithm implements Algorithm {
 		RIDFFeatureWrapper ridfFeatureStore = (RIDFFeatureWrapper) store;
 		Set<Term> result = new HashSet<Term>();
 
+        double totalDocs = (double) ridfFeatureStore.getTotalDocs();
+
 		for(String s: ridfFeatureStore.getTerms()){
 /*			if(tfidfFeatureStore.getTermFreqInCorpus(s)==0 || tfidfFeatureStore.getDocFreq(s)==0){
 				System.out.println("ZERO: "+s+"-tf:"+tfidfFeatureStore.getTermFreqInCorpus(s)+", df:"+tfidfFeatureStore.getDocFreq(s));
 			}*/
 
             int tfInCorpus = ridfFeatureStore.getTermFreqInCorpus(s);
-            double cf_over_N = (double) tfInCorpus / ridfFeatureStore.getTotalDocs();
+            double cf_over_N = (double) tfInCorpus / totalDocs;
             double exponential = Math.exp(0 - cf_over_N);
-            double nominator = ridfFeatureStore.getTotalDocs() * (1 - exponential);
+            double nominator = totalDocs * (1 - exponential);
             double denominator = (double) ridfFeatureStore.getDocFreq(s);
 
             if (denominator == 0) {

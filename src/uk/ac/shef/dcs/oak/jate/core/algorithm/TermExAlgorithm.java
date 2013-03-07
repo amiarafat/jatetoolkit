@@ -44,6 +44,7 @@ public class TermExAlgorithm implements Algorithm {
 		TermExFeatureWrapper gFeatureStore = (TermExFeatureWrapper) store;
 		Set<Term> result = new HashSet<Term>();
 
+        double totalCorpusTermFreq= gFeatureStore.getTotalCorpusTermFreq();
 		for (String s : gFeatureStore.getTerms()) {
 			double score;
 			String[] elements = s.split(" ");
@@ -53,8 +54,8 @@ public class TermExAlgorithm implements Algorithm {
 
 			for (int i = 0; i < T; i++) {
 				String wi = elements[i];
-				SUMwi += (double) gFeatureStore.getWordFreq(wi) / (double) gFeatureStore.getTotalCorpusTermFreq() /
-						(gFeatureStore.getRefWordFreqNorm(wi) + ((double) gFeatureStore.getWordFreq(wi) / (double) gFeatureStore.getTotalCorpusTermFreq()));
+				SUMwi += (double) gFeatureStore.getWordFreq(wi) / totalCorpusTermFreq /
+						(gFeatureStore.getRefWordFreqNorm(wi) + ((double) gFeatureStore.getWordFreq(wi) / totalCorpusTermFreq));
 				SUMfwi += (double) gFeatureStore.getWordFreq(wi);
 			}
 

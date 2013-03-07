@@ -2,7 +2,7 @@
 <project name="jate_googlecode" default="all">
   
   
-  <property file="jate_1.1.properties"/>
+  <property file="jate_build.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
@@ -32,13 +32,16 @@
     <exclude name="**/*~/**"/>
     <exclude name="**/__pycache__/**"/>
     <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
   </patternset>
   <patternset id="library.patterns">
-    <include name="*.war"/>
-    <include name="*.ear"/>
     <include name="*.zip"/>
-    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
     <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
     <include name="*.jar"/>
   </patternset>
   <patternset id="compiler.resources">
@@ -215,10 +218,12 @@
     <property name="temp.jar.path.jate.jar" value="${artifacts.temp.dir}/jate.jar"/>
   </target>
   
-  <target name="artifact.jate" depends="init.artifacts" description="Build &apos;jate&apos; artifact">
+  <target name="artifact.jate" depends="init.artifacts, compile.module.jate_googlecode" description="Build &#39;jate&#39; artifact">
     <property name="artifact.temp.output.jate" value="${artifacts.temp.dir}/jate"/>
     <mkdir dir="${artifact.temp.output.jate}"/>
-    <jar destfile="${temp.jar.path.jate.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain"/>
+    <jar destfile="${temp.jar.path.jate.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${jate_googlecode.output.dir}"/>
+    </jar>
     <copy file="${temp.jar.path.jate.jar}" tofile="${artifact.temp.output.jate}/jate.jar"/>
   </target>
   

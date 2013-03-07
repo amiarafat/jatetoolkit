@@ -24,6 +24,7 @@ public class WeirdnessAlgorithm implements Algorithm {
 		WeirdnessFeatureWrapper gFeatureStore = (WeirdnessFeatureWrapper) store;
 		Set<Term> result = new HashSet<Term>();
 
+        double totalCorpusWordFreq = gFeatureStore.getTotalCorpusWordFreq();
 		for (String s : gFeatureStore.getTerms()) {
 			String[] elements = s.split(" ");
 			double T = (double) elements.length;
@@ -31,7 +32,7 @@ public class WeirdnessAlgorithm implements Algorithm {
 
 			for (int i = 0; i < T; i++) {
 				String wi = elements[i];
-				double v=(double) gFeatureStore.getWordFreq(wi) / (double) gFeatureStore.getTotalCorpusWordFreq() / gFeatureStore.getRefWordFreqNorm(wi);
+				double v=(double) gFeatureStore.getWordFreq(wi) / totalCorpusWordFreq / gFeatureStore.getRefWordFreqNorm(wi);
 				//SUMwi += Math.log((double) gFeatureStore.getWordFreq(wi) / (double) gFeatureStore.getTotalCorpusWordFreq() / gFeatureStore.getRefWordFreqNorm(wi));
 				SUMwi+=Math.log(v);
 			}

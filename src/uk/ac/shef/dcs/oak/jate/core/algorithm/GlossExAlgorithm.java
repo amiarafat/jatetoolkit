@@ -45,6 +45,7 @@ public class GlossExAlgorithm implements Algorithm {
 		GlossExFeatureWrapper gFeatureStore = (GlossExFeatureWrapper) store;
 		Set<Term> result = new HashSet<Term>();
 
+        double totalCorpusTermFreq = gFeatureStore.getTotalCorpusTermFreq();
 		for (String s : gFeatureStore.getTerms()) {
 			double score;
 			String[] elements = s.split(" ");
@@ -54,7 +55,7 @@ public class GlossExAlgorithm implements Algorithm {
 
 			for (int i = 0; i < T; i++) {
 				String wi = elements[i];
-				SUMwi += Math.log((double) gFeatureStore.getWordFreq(wi) / (double) gFeatureStore.getTotalCorpusTermFreq() / gFeatureStore.getRefWordFreqNorm(wi));
+				SUMwi += Math.log((double) gFeatureStore.getWordFreq(wi) / totalCorpusTermFreq / gFeatureStore.getRefWordFreqNorm(wi));
 				SUMfwi += (double) gFeatureStore.getWordFreq(wi);
 			}
 

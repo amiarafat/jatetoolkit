@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="3de03060-5498-4eac-8d0f-a10d9c2f10a8" name="Default" comment="" />
+    <list default="true" readonly="true" id="3de03060-5498-4eac-8d0f-a10d9c2f10a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/WeirdnessAlgorithm.java" afterPath="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/WeirdnessAlgorithm.java" />
+    </list>
     <ignored path="jate_googlecode.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,14 +20,26 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-    <option name="REVERSE_PATCH" value="false" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NounPhraseExtractorOpenNLP.java" line="114" class="uk.ac.shef.dcs.oak.jate.core.npextractor.NounPhraseExtractorOpenNLP" package="uk.ac.shef.dcs.oak.jate.core.npextractor">
+      <breakpoint url="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NounPhraseExtractorOpenNLP.java" line="63" class="uk.ac.shef.dcs.oak.jate.core.npextractor.NounPhraseExtractorOpenNLP" package="uk.ac.shef.dcs.oak.jate.core.npextractor">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NounPhraseExtractorOpenNLP.java" line="83" class="uk.ac.shef.dcs.oak.jate.core.npextractor.NounPhraseExtractorOpenNLP" package="uk.ac.shef.dcs.oak.jate.core.npextractor">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -74,91 +93,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AbstractFeatureWrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/AbstractFeatureWrapper.java">
+      <file leaf-file-name="GlobalIndexMem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/indexer/GlobalIndexMem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="44" selection-start="362" selection-end="384" vertical-scroll-proportion="0.0">
+            <state line="241" column="26" selection-start="7051" selection-end="7051" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RIDFAlgorithm.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AverageCorpusTFAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/AverageCorpusTFAlgorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RIDFAlgorithm.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="10" selection-start="451" selection-end="451" vertical-scroll-proportion="0.24843423">
+            <state line="27" column="0" selection-start="1146" selection-end="1146" vertical-scroll-proportion="-7.185185">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algorithm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/Algorithm.java">
+      <file leaf-file-name="TFIDFAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TFIDFAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="46" selection-start="8" selection-end="46" vertical-scroll-proportion="0.0">
+            <state line="25" column="80" selection-start="834" selection-end="895" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JATEProperties.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/JATEProperties.java">
+      <file leaf-file-name="WeirdnessAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/WeirdnessAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
+            <state line="40" column="66" selection-start="1531" selection-end="1531" vertical-scroll-proportion="-13.259259">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CandidateTermExtractor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/CandidateTermExtractor.java">
+      <file leaf-file-name="TermExAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="16" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
+            <state line="57" column="125" selection-start="1874" selection-end="1874" vertical-scroll-proportion="-11.37037">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NGramExtractor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NGramExtractor.java">
+      <file leaf-file-name="GlossExAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="27" selection-start="681" selection-end="695" vertical-scroll-proportion="0.0">
+            <state line="47" column="73" selection-start="1564" selection-end="1586" vertical-scroll-proportion="-3.1851852">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NounPhraseExtractorOpenNLP.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NounPhraseExtractorOpenNLP.java">
+      <file leaf-file-name="FrequencyAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/FrequencyAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="39" selection-start="1302" selection-end="1328" vertical-scroll-proportion="0.0">
+            <state line="16" column="13" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WordExtractor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/WordExtractor.java">
+      <file leaf-file-name="CValueAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/CValueAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="26" selection-start="698" selection-end="711" vertical-scroll-proportion="0.0">
+            <state line="18" column="13" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractFeature.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/AbstractFeature.java">
+      <file leaf-file-name="FeatureBuilderTermNest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderTermNest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="56" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractFeatureBuilder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/AbstractFeatureBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="44" selection-start="495" selection-end="517" vertical-scroll-proportion="0.0">
+            <state line="56" column="55" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.75868726">
               <folding />
             </state>
           </provider>
@@ -174,28 +193,34 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/AbstractFeatureBuilder.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderCorpusTermFrequency.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderTermNest.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureCorpusTermFrequency.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureDocumentTermFrequency.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureRefCorpusTermFrequency.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureTermNest.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/WordExtractor.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/CandidateTermExtractor.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NounPhraseExtractorOpenNLP.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NGramExtractor.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/test/AlgorithmTester.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderDocumentTermFrequencyMultiThread.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderCorpusTermFrequencyMultiThread.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderTermNestMultiThread.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/JATEProperties.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderCorpusTermFrequencyMultiThread.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderTermNest.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TFIDFAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/indexer/GlobalIndexMem.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/test/AlgorithmTester.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/io/GlobalIndexWriterHSQL.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/WeirdnessAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java" />
       </list>
     </option>
   </component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1698" />
+    <option name="height" value="1034" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -318,98 +343,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="counter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate_googlecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -571,9 +504,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -587,14 +520,14 @@
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jate_1.1" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jate_build" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.AlgorithmTester">
@@ -607,15 +540,6 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" adl_options="" air_descriptor_path="" air_program_params="" air_publisher_id="" air_root_dir_path="" air_run_mode="AppDescriptor" browser_family="FIREFOX" class_name="" debugger_sdk="Module SDK" html_or_swf_file_path="" launcher_type="OSDefault" main_class_name="" method_name="" module_name="" output_log_level="" package_name="" player_path="FlashPlayer.exe" port="0" run_mode="HtmlOrSwfFile" run_trusted="false" scope="Class" socket_policy_port="0" url_to_launch="http://">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="PhingTarget" enabled="false" />
       </method>
@@ -719,7 +643,7 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="true">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -734,9 +658,32 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
     <configuration useDefault="true">C:\Users\zqz\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\work\JATR_SDK\jate_googlecode" />
+          <option name="myCopyRoot" value="D:\work\JATR_SDK\jate_googlecode" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\work\JATR_SDK\jate_googlecode\.idea" />
+          <option name="myCopyRoot" value="D:\work\JATR_SDK\jate_googlecode\.idea" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\work\JATR_SDK\jate_googlecode" />
+          <option name="myCopyRoot" value="D:\work\JATR_SDK\jate_googlecode" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -767,31 +714,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="20" width="1698" height="977" extended-state="0" />
+    <frame x="-9" y="-9" width="1698" height="1034" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37142858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5515528" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5638999" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2795031" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27873182" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32830626" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24693628" sideWeight="0.67270666" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3272933" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3712297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36112815" sideWeight="0.6720497" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3279503" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
@@ -817,7 +770,16 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -840,110 +802,108 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderTermNestMultiThread.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/indexer/GlobalIndexBuilderMem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="128" selection-start="1336" selection-end="1336" vertical-scroll-proportion="0.0" />
+        <state line="19" column="13" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderCorpusTermFrequencyMultiThread.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/nlptools/NLPToolsControllerOpenNLP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="120" selection-start="2202" selection-end="2202" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/test/TestRIDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="13" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="71" column="21" selection-start="2322" selection-end="2322" vertical-scroll-proportion="2.4014869" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/test/AlgorithmTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="20" selection-start="2722" selection-end="2722" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderCorpusTermFrequency.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="25" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jate.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/JATEProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/CandidateTermExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="16" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NGramExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="27" selection-start="681" selection-end="695" vertical-scroll-proportion="0.0">
+        <state line="71" column="92" selection-start="3305" selection-end="3379" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/NounPhraseExtractorOpenNLP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="39" selection-start="1302" selection-end="1328" vertical-scroll-proportion="0.0">
+        <state line="29" column="39" selection-start="1302" selection-end="1328" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/io/GlobalIndexWriterHSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="72" selection-start="4845" selection-end="4845" vertical-scroll-proportion="-19.518518">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/npextractor/WordExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TFIDFFeatureWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="698" selection-end="711" vertical-scroll-proportion="0.0">
+        <state line="36" column="15" selection-start="813" selection-end="813" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/AbstractFeature.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/indexer/GlobalIndexMem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="56" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0">
+        <state line="241" column="26" selection-start="7051" selection-end="7051" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/AbstractFeatureBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/AverageCorpusTFAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="44" selection-start="495" selection-end="517" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/Algorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="46" selection-start="8" selection-end="46" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/AbstractFeatureWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="44" selection-start="362" selection-end="384" vertical-scroll-proportion="0.0">
+        <state line="12" column="13" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/RIDFAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="10" selection-start="451" selection-end="451" vertical-scroll-proportion="0.24843423">
+        <state line="27" column="0" selection-start="1146" selection-end="1146" vertical-scroll-proportion="-7.185185">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TFIDFAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="80" selection-start="834" selection-end="895" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/WeirdnessAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="66" selection-start="1531" selection-end="1531" vertical-scroll-proportion="-13.259259">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/TermExAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="125" selection-start="1874" selection-end="1874" vertical-scroll-proportion="-11.37037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/GlossExAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="73" selection-start="1564" selection-end="1586" vertical-scroll-proportion="-3.1851852">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/FrequencyAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/algorithm/CValueAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="13" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/shef/dcs/oak/jate/core/feature/FeatureBuilderTermNest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="55" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.75868726">
           <folding />
         </state>
       </provider>
@@ -967,7 +927,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1007,7 +967,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
