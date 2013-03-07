@@ -7,17 +7,15 @@ import uk.ac.shef.dcs.oak.jate.core.feature.*;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndex;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexBuilderMem;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexMem;
-import uk.ac.shef.dcs.oak.jate.core.npextractor.NGramExtractor;
+import uk.ac.shef.dcs.oak.jate.core.npextractor.CandidateTermExtractor;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.NounPhraseExtractorOpenNLP;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.WordExtractor;
-import uk.ac.shef.dcs.oak.jate.io.GlobalIndexWriterHSQL;
 import uk.ac.shef.dcs.oak.jate.io.ResultWriter2File;
 import uk.ac.shef.dcs.oak.jate.model.CorpusImpl;
 import uk.ac.shef.dcs.oak.jate.model.Term;
 import uk.ac.shef.dcs.oak.jate.util.control.Lemmatizer;
 import uk.ac.shef.dcs.oak.jate.util.control.StopList;
 import uk.ac.shef.dcs.oak.jate.util.counter.WordCounter;
-import uk.ac.shef.dcs.oak.jate.core.npextractor.CandidateTermExtractor;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,9 +67,9 @@ public class AlgorithmTester {
 
                 //Three CandidateTermExtractor are implemented:
                 //1. An OpenNLP noun phrase extractor that extracts noun phrases as candidate terms
-				//CandidateTermExtractor npextractor = new NounPhraseExtractorOpenNLP(stop, lemmatizer);
+				CandidateTermExtractor npextractor = new NounPhraseExtractorOpenNLP(stop, lemmatizer);
                 //2. A generic N-gram extractor that extracts n(default is 5, see the property file) grams
-                CandidateTermExtractor npextractor = new NGramExtractor(stop, lemmatizer);
+                //CandidateTermExtractor npextractor = new NGramExtractor(stop, lemmatizer);
                 //3. A word extractor that extracts single words as candidate terms.
                 //CandidateTermExtractor wordextractor = new WordExtractor(stop, lemmatizer);
 

@@ -116,7 +116,7 @@ public class GlobalIndexWriterHSQL {
                 pstmt.setInt(1, e.getKey());
                 String docIdStr = "";
                 for(Integer i: e.getValue()){
-                    docIdStr=HSQLDBUtil.VALUE_SEPARATOR+i;
+                    docIdStr+=HSQLDBUtil.VALUE_SEPARATOR+i;
                 }
                 if(docIdStr.startsWith(HSQLDBUtil.VALUE_SEPARATOR))
                     docIdStr=docIdStr.substring(1);
