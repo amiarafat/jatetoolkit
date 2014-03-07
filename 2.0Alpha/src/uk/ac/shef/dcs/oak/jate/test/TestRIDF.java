@@ -2,13 +2,14 @@ package uk.ac.shef.dcs.oak.jate.test;
 
 import org.apache.log4j.Logger;
 import uk.ac.shef.dcs.oak.jate.JATEException;
+import uk.ac.shef.dcs.oak.jate.JATEProperties;
 import uk.ac.shef.dcs.oak.jate.core.algorithm.*;
 import uk.ac.shef.dcs.oak.jate.core.feature.FeatureBuilderCorpusTermFrequency;
 import uk.ac.shef.dcs.oak.jate.core.feature.FeatureCorpusTermFrequency;
+import uk.ac.shef.dcs.oak.jate.core.feature.TermVariantsUpdater;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexBuilderMem;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexMem;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.CandidateTermExtractor;
-import uk.ac.shef.dcs.oak.jate.core.npextractor.NounPhraseExtractorOpenNLP;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.WordExtractor;
 import uk.ac.shef.dcs.oak.jate.io.ResultWriter2File;
 import uk.ac.shef.dcs.oak.jate.model.CorpusImpl;
@@ -49,9 +50,12 @@ public class TestRIDF {
 
 	public static void main(String[] args) throws IOException, JATEException {
 
-		if (args.length < 2) {
-			System.out.println("Usage: java TestRIDF [path_to_corpus] [path_to_output]");
-		} else {
+		String path_to_corpus= JATEProperties.getInstance().getCorpusPath();
+		String path_to_output= JATEProperties.getInstance().getResultPath();
+		
+		//if (args.length < 2) {
+		//	System.out.println("Usage: java TestRIDF [path_to_corpus] [path_to_output]");
+		//} else {
 			System.out.println("Started "+ TestRIDF.class+"at: " + new Date() + "... For detailed progress see log file jate.log.");
 
 			//creates instances of required processors and resources
@@ -74,16 +78,29 @@ public class TestRIDF {
 			//relations
 			GlobalIndexBuilderMem builder = new GlobalIndexBuilderMem();
 			//build the global resource index
-			GlobalIndexMem termDocIndex = builder.build(new CorpusImpl(args[0]), npextractor);
-
+			GlobalIndexMem termDocIndex = builder.build(new CorpusImpl(path_to_corpus), npextractor);
+			
+			/*newly added for improving frequency count calculation: begins*/
+			
+			TermVariantsUpdater update = new TermVariantsUpdater(termDocIndex, stop, lemmatizer);
+			
+			GlobalIndexMem termIndex = update.updateVariants();
+			
 			//build a feature store required by the tfidf algorithm, using the processors instantiated above
 			FeatureCorpusTermFrequency termCorpusFreq =
-					new FeatureBuilderCorpusTermFrequency(npcounter, wordcounter, lemmatizer).build(termDocIndex);
+							new FeatureBuilderCorpusTermFrequency(npcounter, wordcounter, lemmatizer).build(termIndex);
 
+			/*newly added for improving frequency count calculation: ends*/
+			
+
+			//build a feature store required by the tfidf algorithm, using the processors instantiated above
+			/*FeatureCorpusTermFrequency termCorpusFreq =
+					new FeatureBuilderCorpusTermFrequency(npcounter, wordcounter, lemmatizer).build(termDocIndex);
+			*/
 			AlgorithmTester tester = new AlgorithmTester();
 			tester.registerAlgorithm(new RIDFAlgorithm(), new RIDFFeatureWrapper(termCorpusFreq));
-			tester.execute(termDocIndex, args[1]);
+			tester.execute(termDocIndex, path_to_output);
 			System.out.println("Ended at: " + new Date());
 		}
 	}
-}
+//}

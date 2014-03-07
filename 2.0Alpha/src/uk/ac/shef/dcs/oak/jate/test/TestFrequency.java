@@ -84,6 +84,7 @@ public class TestFrequency {
 			GlobalIndexBuilderMem builder = new GlobalIndexBuilderMem();
 			//build the global resource index
 			GlobalIndexMem termDocIndex = builder.build(new CorpusImpl(args[0]), npextractor);
+			
 
 			//build a feature store required by the tfidf algorithm, using the processors instantiated above
 			FeatureCorpusTermFrequency termCorpusFreq =

@@ -1,24 +1,26 @@
 package uk.ac.shef.dcs.oak.jate.model;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * Represents a term.
  *
  * @author <a href="mailto:z.zhang@dcs.shef.ac.uk">Ziqi Zhang</a>
  */
 
-public class Term implements Comparable<Term> {
+public class NCTermwithOriginals extends Term { //implements Comparable<Term> {
 
-	protected String _singular;
-	protected double _confidence;
+	Set<String> _originals;
 
 	/**
 	 * Creates a term
 	 * @param lemma the lemmatised text of the term
 	 * @param confidence the relevance of the term to the corpus from which it is extracted
 	 */
-	public Term(java.lang.String lemma, double confidence) {
-		_singular = lemma;
-		_confidence = confidence;
+	public NCTermwithOriginals(java.lang.String lemma, Set<String> originals, double confidence) {
+		super(lemma, confidence);
+		_originals.addAll(originals);
 	}
 
 	public java.lang.String getConcept() {
@@ -35,7 +37,13 @@ public class Term implements Comparable<Term> {
 	public void setConfidence(double c){
 		_confidence=c;
 	}
-
+	
+	public void setOriginals(Set<String> originals){
+		_originals=originals;
+	}
+	public Set<String> getOriginals(){
+		return _originals;
+	}
 
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -53,8 +61,4 @@ public class Term implements Comparable<Term> {
 	public int compareTo(final Term c) {
       return getConfidence() > c.getConfidence() ? -1 : getConfidence() < c.getConfidence() ? 1 : 0;
    }
-	
-	
-	
-
 }
