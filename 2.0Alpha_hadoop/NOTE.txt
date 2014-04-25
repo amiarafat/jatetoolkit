@@ -1,0 +1,3 @@
+This is the distributed jate currently under development.
+
+NOT TO BE RELEASED
