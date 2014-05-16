@@ -3,9 +3,14 @@ package uk.ac.shef.dcs.oak.jate.util.control;
 import dragon.nlp.tool.lemmatiser.EngLemmatiser;
 import uk.ac.shef.dcs.oak.jate.JATEProperties;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import org.apache.commons.io.FileUtils;
 
 /**
  * Lemmatizer is a specific type of Normaliser and returns a string to its dictionary root.
@@ -66,7 +71,17 @@ public class Lemmatizer extends Normalizer {
 
 
 	private void init() {
-		lemmatizer = new EngLemmatiser(JATEProperties.getInstance().getNLPPath()+"/lemmatizer", false, true);
+		String nlpPath = JATEProperties.getInstance().getNLPPath();
+		InputStream inputStream = this.getClass().getResourceAsStream(
+				nlpPath + "/lemmatizer");
+		String tempDir = "/tmp";
+		File tempFile = new File(tempDir);
+		try {
+			FileUtils.copyInputStreamToFile(inputStream, tempFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		lemmatizer = new EngLemmatiser(localDir, false, true);
 		tagLookUp.put("NN", 1);
 		tagLookUp.put("NNS", 1);
 		tagLookUp.put("NNP", 1);
@@ -83,6 +98,7 @@ public class Lemmatizer extends Normalizer {
 		tagLookUp.put("RB", 4);
 		tagLookUp.put("RBR", 4);
 		tagLookUp.put("RBS", 4);
+		FileUtils.deleteQuietly(tempFile);
 	}
 
 }
