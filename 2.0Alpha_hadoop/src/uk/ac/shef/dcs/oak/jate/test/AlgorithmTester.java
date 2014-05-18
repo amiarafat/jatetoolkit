@@ -1,5 +1,6 @@
 package uk.ac.shef.dcs.oak.jate.test;
 
+import org.apache.hadoop.mapreduce.Mapper.Context;
 import org.apache.log4j.Logger;
 import uk.ac.shef.dcs.oak.jate.JATEException;
 import uk.ac.shef.dcs.oak.jate.core.algorithm.*;
@@ -63,6 +64,26 @@ public class AlgorithmTester {
             _logger.info("Running feature store builder and ATR..." + en.getKey().toString());
             result = en.getKey().execute(en.getValue()); 
             writer.output(result, outFolder + File.separator + en.getKey().toString() + ".txt");   
+        }
+      
+	}
+	
+	public void execute(GlobalIndex index, Context context) throws JATEException, IOException,InterruptedException {
+		//NCValue code modification begins
+		
+		_index=index;
+		
+		//NCValue code modification ends
+		
+		ResultWriter2File writer = new ResultWriter2File(index);
+        if (_algregistry.size() == 0) throw new JATEException("No algorithm registered!");
+        _logger.info("Running NP recognition...");
+
+        /*.extractNP(c);*/
+        for (Map.Entry<Algorithm, AbstractFeatureWrapper> en : _algregistry.entrySet()) {
+            _logger.info("Running feature store builder and ATR..." + en.getKey().toString());
+            result = en.getKey().execute(en.getValue()); 
+            writer.output(result, context);   
         }
       
 	}
