@@ -74,8 +74,8 @@ public class Lemmatizer extends Normalizer {
 		String nlpPath = JATEProperties.getInstance().getNLPPath();
 		InputStream inputStream = this.getClass().getResourceAsStream(
 				nlpPath + "/lemmatizer");
-		String tempDir = "/tmp";
-		File tempFile = new File(tempDir);
+		String localDir = "/tmp";
+		File tempFile = new File(localDir);
 		try {
 			FileUtils.copyInputStreamToFile(inputStream, tempFile);
 		} catch (IOException e) {
