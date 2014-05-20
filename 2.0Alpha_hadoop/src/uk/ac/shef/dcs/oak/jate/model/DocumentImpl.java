@@ -9,43 +9,55 @@ import java.io.IOException;
  * @author <a href="mailto:z.zhang@dcs.shef.ac.uk">Ziqi Zhang</a>
  */
 
-
-public class DocumentImpl implements Document{
+public class DocumentImpl implements Document {
 
 	protected URL _url;
+	protected String fileContent;
 
-   public DocumentImpl(URL url) {
-	   _url = url;
-   }
+	public DocumentImpl(URL url) {
+		_url = url;
+	}
 
-   public URL getUrl() {
-      return _url;
-   }
+	public DocumentImpl(String fileContent) {
+		this.fileContent = fileContent;
+	}
 
-   public String getContent() {
-      String content = null;
-      try {
-         content = UtilFiles.getContent(_url).toString();
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
-      return content;
-   }
+	public URL getUrl() {
+		return _url;
+	}
 
-   public String toString() {
-      return _url.toString();
-   }
+	public String getContent() {
 
-   public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      final DocumentImpl that = (DocumentImpl) o;
+		
+		if (null == _url && fileContent != null) {
+			return fileContent;
+		}
 
-	   return that.getUrl().equals(getUrl());
+		String content = null;
+		try {
+			content = UtilFiles.getContent(_url).toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return content;
+	}
 
-   }
+	public String toString() {
+		return fileContent.toString();
+	}
 
-   public int hashCode() {
-      return _url.hashCode();
-   }
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		final DocumentImpl that = (DocumentImpl) o;
+
+		return that.getUrl().equals(getUrl());
+
+	}
+
+	public int hashCode() {
+		return fileContent.hashCode();
+	}
 }

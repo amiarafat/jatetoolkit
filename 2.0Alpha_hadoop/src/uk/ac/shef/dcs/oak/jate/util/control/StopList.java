@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.net.URL;
 
 /**
  * Represents a stop word list. These are the words which usually should not occur in a valid term
@@ -29,9 +27,9 @@ public class StopList extends HashSet<String> {
 	public StopList (final boolean caseSensitive) throws IOException {
 		super();
 		_caseSensitive =caseSensitive;
-		String nlpPath = JATEProperties.getInstance().getNLPPath();
-		URL url = this.getClass().getResource(nlpPath + "/stoplist.txt");
-		loadStopList(url, _caseSensitive);
+		loadStopList(new File(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()
+				+ "//stoplist.txt"),_caseSensitive);
 	}
 
 	/**
@@ -43,9 +41,8 @@ public class StopList extends HashSet<String> {
 		return contains(word);
 	}
 
-	private void loadStopList(final URL stopListFile, final boolean lowercase) throws IOException {
-      final BufferedReader reader = new BufferedReader(new InputStreamReader(
-				stopListFile.openStream()));
+	private void loadStopList(final File stopListFile, final boolean lowercase) throws IOException {
+      final BufferedReader reader = new BufferedReader(new FileReader(stopListFile));
       String line;
       while ((line = reader.readLine()) != null) {
          line = line.trim();

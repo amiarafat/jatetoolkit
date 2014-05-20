@@ -33,19 +33,21 @@ public class NLPToolsControllerOpenNLP {
 	private Tokenizer _tokenizer;
 
 	private NLPToolsControllerOpenNLP() throws IOException {
-		String nlpPath = JATEProperties.getInstance().getNLPPath();
-
-		POSModel posModel = new POSModel(this.getClass().getResourceAsStream(nlpPath + "/en-pos-maxent.bin"));
+        POSModel posModel = new POSModel(new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-pos-maxent.bin"));
 		_posTagger = new POSTaggerME(posModel);
 
-		ChunkerModel chunkerModel = new ChunkerModel(this.getClass().getResourceAsStream(nlpPath + "/en-chunker.bin"));
+        ChunkerModel chunkerModel = new ChunkerModel(new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-chunker.bin"));
 		_npChunker = new ChunkerME(chunkerModel);
 
-		TokenizerModel tokenizerModel = new TokenizerModel(this.getClass().getResourceAsStream(nlpPath + "/en-token.bin"));
+        TokenizerModel tokenizerModel = new TokenizerModel(new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-token.bin"));
 		_tokenizer = new TokenizerME(tokenizerModel);
 
-		SentenceModel sentModel = new SentenceModel(this.getClass().getResourceAsStream(nlpPath + "/en-sent.bin"));
-		_sentDetect = new SentenceDetectorME(sentModel);
+        SentenceModel sentModel = new SentenceModel(new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-sent.bin"));
+        _sentDetect = new SentenceDetectorME(sentModel);
 
 	}
 
