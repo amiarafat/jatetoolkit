@@ -50,6 +50,7 @@ public class StopList extends HashSet<String> {
          if(lowercase) this.add(line.toLowerCase());
 	      else this.add(line);
       }
+      reader.close();
    }
 
 }

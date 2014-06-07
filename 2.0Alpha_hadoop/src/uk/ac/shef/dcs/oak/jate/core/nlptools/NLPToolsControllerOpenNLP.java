@@ -33,21 +33,29 @@ public class NLPToolsControllerOpenNLP {
 	private Tokenizer _tokenizer;
 
 	private NLPToolsControllerOpenNLP() throws IOException {
-        POSModel posModel = new POSModel(new FileInputStream(System.getProperty("user.home") + "//"
-				+ JATEProperties.getInstance().getNLPPath()+"/en-pos-maxent.bin"));
+        FileInputStream posStream = new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-pos-maxent.bin");
+		POSModel posModel = new POSModel(posStream);
 		_posTagger = new POSTaggerME(posModel);
+		posStream.close();
 
-        ChunkerModel chunkerModel = new ChunkerModel(new FileInputStream(System.getProperty("user.home") + "//"
-				+ JATEProperties.getInstance().getNLPPath()+"/en-chunker.bin"));
+        FileInputStream chunkerStream = new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-chunker.bin");
+		ChunkerModel chunkerModel = new ChunkerModel(chunkerStream);
 		_npChunker = new ChunkerME(chunkerModel);
+		chunkerStream.close();
 
-        TokenizerModel tokenizerModel = new TokenizerModel(new FileInputStream(System.getProperty("user.home") + "//"
-				+ JATEProperties.getInstance().getNLPPath()+"/en-token.bin"));
+        FileInputStream tokenizerStream = new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-token.bin");
+		TokenizerModel tokenizerModel = new TokenizerModel(tokenizerStream);
 		_tokenizer = new TokenizerME(tokenizerModel);
+		tokenizerStream.close();
 
-        SentenceModel sentModel = new SentenceModel(new FileInputStream(System.getProperty("user.home") + "//"
-				+ JATEProperties.getInstance().getNLPPath()+"/en-sent.bin"));
+        FileInputStream sentenceStream = new FileInputStream(System.getProperty("user.home") + "//"
+				+ JATEProperties.getInstance().getNLPPath()+"/en-sent.bin");
+		SentenceModel sentModel = new SentenceModel(sentenceStream);
         _sentDetect = new SentenceDetectorME(sentModel);
+        sentenceStream.close();
 
 	}
 
