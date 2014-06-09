@@ -13,16 +13,16 @@ import org.apache.hadoop.util.ToolRunner;
 
 import uk.ac.shef.dcs.oak.jate.hadoop.WholeFileInputFormat;
 
-public class TestChiSquareJob extends Configured implements Tool {
+public class TestAverageCorpusTFJob extends Configured implements Tool {
 
-	private static final Log log = LogFactory.getLog(TestChiSquareJob.class);
+	private static final Log log = LogFactory.getLog(TestAverageCorpusTFJob.class);
 
 	@Override
 	public int run(String[] args) throws Exception {
 		Configuration conf = new Configuration();
 		Job job = new Job(conf, "JateMRJob");
-		job.setJarByClass(TestChiSquareJob.class);
-		job.setMapperClass(TestChiSquare.class);
+		job.setJarByClass(TestAverageCorpusTFJob.class);
+		job.setMapperClass(TestAverageCorpusTF.class);
 		job.setNumReduceTasks(0);
 		job.setInputFormatClass(WholeFileInputFormat.class);
 		FileInputFormat.addInputPath(job, new Path(args[0]));
@@ -31,12 +31,12 @@ public class TestChiSquareJob extends Configured implements Tool {
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 
-	public void runChisquareJob(String inputPath, String outputPath)
+	public void runAverageCorpusTFJob(String inputPath, String outputPath)
 			throws Exception {
 		String jobArgs[] = new String[] { inputPath, outputPath };
 		int exitCode;
 		try {
-			exitCode = ToolRunner.run(new TestChiSquareJob(), jobArgs);
+			exitCode = ToolRunner.run(new TestAverageCorpusTFJob(), jobArgs);
 		} catch (Exception e) {
 			throw e;
 		}

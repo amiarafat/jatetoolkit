@@ -98,9 +98,9 @@ public class TestChiSquare extends Mapper<Text, Text, Text, Text> {
 
 	public static void main(String[] args) throws IOException, JATEException {
 
-		TestCValueJob cValueJob = new TestCValueJob();
+		TestChiSquareJob chisquareJob = new TestChiSquareJob();
 		try {
-			cValueJob.runCValueJob(args[0], args[1]);
+			chisquareJob.runChisquareJob(args[0], args[1]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

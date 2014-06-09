@@ -1,89 +1,98 @@
 package uk.ac.shef.dcs.oak.jate.test;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+import java.util.Date;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
 import uk.ac.shef.dcs.oak.jate.JATEException;
-import uk.ac.shef.dcs.oak.jate.core.algorithm.*;
+import uk.ac.shef.dcs.oak.jate.core.algorithm.AverageCorpusTFAlgorithm;
+import uk.ac.shef.dcs.oak.jate.core.algorithm.AverageCorpusTFFeatureWrapper;
 import uk.ac.shef.dcs.oak.jate.core.feature.FeatureBuilderCorpusTermFrequency;
 import uk.ac.shef.dcs.oak.jate.core.feature.FeatureCorpusTermFrequency;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexBuilderMem;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexMem;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.CandidateTermExtractor;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.WordExtractor;
-import uk.ac.shef.dcs.oak.jate.io.ResultWriter2File;
 import uk.ac.shef.dcs.oak.jate.model.CorpusImpl;
-import uk.ac.shef.dcs.oak.jate.model.Term;
 import uk.ac.shef.dcs.oak.jate.util.control.Lemmatizer;
 import uk.ac.shef.dcs.oak.jate.util.control.StopList;
 import uk.ac.shef.dcs.oak.jate.util.counter.TermFreqCounter;
 import uk.ac.shef.dcs.oak.jate.util.counter.WordCounter;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  */
-public class TestAverageCorpusTF {
-    private Map<Algorithm, AbstractFeatureWrapper> _algregistry = new HashMap<Algorithm, AbstractFeatureWrapper>();
-	private static Logger _logger = Logger.getLogger(AlgorithmTester.class);
+public class TestAverageCorpusTF extends Mapper<Text, Text, Text, Text> {
+	private static final Log log = LogFactory.getLog(TestChiSquare.class);
 
-	public void registerAlgorithm(Algorithm a, AbstractFeatureWrapper f) {
-		_algregistry.put(a, f);
-	}
+	public void map(Text key, Text value, Context context) {
+		byte[] fileContent = value.getBytes();
+		String fileContentString = new String(fileContent);
+		log.debug("file contents " + fileContentString);
+		try {
+			System.out.println("Started " + TestCValue.class + "at: "
+					+ new Date()
+					+ "... For detailed progress see log file jate.log.");
 
-	public void execute(GlobalIndexMem index) throws JATEException, IOException {
-		_logger.info("Initializing outputter, loading NP mappings...");
-		ResultWriter2File writer = new ResultWriter2File(index);
-		if (_algregistry.size() == 0) throw new JATEException("No algorithm registered!");
-		_logger.info("Running NP recognition...");
+			// creates instances of required processors and resources
 
-		/*.extractNP(c);*/
-		for (Map.Entry<Algorithm, AbstractFeatureWrapper> en : _algregistry.entrySet()) {
-			_logger.info("Running feature store builder and ATR..." + en.getKey().toString());
-			Term[] result = en.getKey().execute(en.getValue());
-			writer.output(result, en.getKey().toString() + ".txt");
+			// creates instances of required processors and resources
+
+			// stop word list
+			StopList stop = new StopList(true);
+
+			// lemmatiser
+			Lemmatizer lemmatizer = new Lemmatizer();
+
+			// noun phrase extractor
+			CandidateTermExtractor npextractor = new WordExtractor(stop,
+					lemmatizer, true, 2);
+			// WordExtractor npextractor = new WordExtractor(stop, lemmatizer);
+
+			// counters
+			TermFreqCounter npcounter = new TermFreqCounter();
+			WordCounter wordcounter = new WordCounter();
+
+			// create global resource index builder, which indexes global
+			// resources, such as documents and terms and their
+			// relations
+			GlobalIndexBuilderMem builder = new GlobalIndexBuilderMem();
+			// build the global resource index
+			GlobalIndexMem termDocIndex = builder.build(new CorpusImpl(
+					fileContentString), npextractor);
+
+			// build a feature store required by the tfidf algorithm, using the
+			// processors instantiated above
+			FeatureCorpusTermFrequency termCorpusFreq = new FeatureBuilderCorpusTermFrequency(
+					npcounter, wordcounter, lemmatizer).build(termDocIndex);
+
+			AlgorithmTester tester = new AlgorithmTester();
+			tester.registerAlgorithm(new AverageCorpusTFAlgorithm(),
+					new AverageCorpusTFFeatureWrapper(termCorpusFreq));
+			tester.execute(termDocIndex, context);
+
+		} catch (IOException e) {
+			log.error("Got an IOException", e);
+		} catch (InterruptedException e) {
+			log.error("Got an InterruptedException", e);
+		} catch (JATEException e) {
+			log.error("Got a JateException", e);
 		}
+		System.out.println("Ended at: " + new Date());
 	}
 
 	public static void main(String[] args) throws IOException, JATEException {
 
-		if (args.length < 2) {
-			System.out.println("Usage: java TestAverageCorpusTF [path_to_corpus] [path_to_output]");
-		} else {
-			System.out.println("Started "+ TestAverageCorpusTF.class+"at: " + new Date() + "... For detailed progress see log file jate.log.");
-
-			//creates instances of required processors and resources
-
-			//stop word list
-			StopList stop = new StopList(true);
-
-			//lemmatiser
-			Lemmatizer lemmatizer = new Lemmatizer();
-
-			//noun phrase extractor
-			CandidateTermExtractor npextractor = new WordExtractor(stop, lemmatizer, true,2);
-			//WordExtractor npextractor = new WordExtractor(stop, lemmatizer);
-
-			//counters
-			TermFreqCounter npcounter = new TermFreqCounter();
-			WordCounter wordcounter = new WordCounter();
-
-			//create global resource index builder, which indexes global resources, such as documents and terms and their
-			//relations
-			GlobalIndexBuilderMem builder = new GlobalIndexBuilderMem();
-			//build the global resource index
-			GlobalIndexMem termDocIndex = builder.build(new CorpusImpl(args[0]), npextractor);
-
-			//build a feature store required by the tfidf algorithm, using the processors instantiated above
-			FeatureCorpusTermFrequency termCorpusFreq =
-					new FeatureBuilderCorpusTermFrequency(npcounter, wordcounter, lemmatizer).build(termDocIndex);
-
-			AlgorithmTester tester = new AlgorithmTester();
-			tester.registerAlgorithm(new AverageCorpusTFAlgorithm(), new AverageCorpusTFFeatureWrapper(termCorpusFreq));
-			tester.execute(termDocIndex, args[1]);
-			System.out.println("Ended at: " + new Date());
+		TestAverageCorpusTFJob averageCorpusTFJob = new TestAverageCorpusTFJob();
+		try {
+			averageCorpusTFJob.runAverageCorpusTFJob(args[0], args[1]);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+
 }
