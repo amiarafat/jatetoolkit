@@ -1,15 +1,14 @@
 package uk.ac.shef.dcs.oak.jate.test;
 
+import java.io.IOException;
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Mapper.Context;
-import org.apache.log4j.Logger;
-import uk.ac.shef.dcs.oak.jate.core.algorithm.AbstractFeatureWrapper;
-import uk.ac.shef.dcs.oak.jate.core.algorithm.Algorithm;
-import uk.ac.shef.dcs.oak.jate.core.algorithm.FrequencyAlgorithm;
-import uk.ac.shef.dcs.oak.jate.core.algorithm.FrequencyFeatureWrapper;
+
+import uk.ac.shef.dcs.oak.jate.JATEException;
 import uk.ac.shef.dcs.oak.jate.core.algorithm.GlossExAlgorithm;
 import uk.ac.shef.dcs.oak.jate.core.algorithm.GlossExFeatureWrapper;
 import uk.ac.shef.dcs.oak.jate.core.feature.FeatureBuilderCorpusTermFrequency;
@@ -21,19 +20,11 @@ import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndexMem;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.CandidateTermExtractor;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.NounPhraseExtractorOpenNLP;
 import uk.ac.shef.dcs.oak.jate.core.npextractor.WordExtractor;
-import uk.ac.shef.dcs.oak.jate.io.ResultWriter2File;
 import uk.ac.shef.dcs.oak.jate.model.CorpusImpl;
-import uk.ac.shef.dcs.oak.jate.model.Term;
-import uk.ac.shef.dcs.oak.jate.util.control.StopList;
-import uk.ac.shef.dcs.oak.jate.JATEException;
-import uk.ac.shef.dcs.oak.jate.util.counter.WordCounter;
 import uk.ac.shef.dcs.oak.jate.util.control.Lemmatizer;
+import uk.ac.shef.dcs.oak.jate.util.control.StopList;
 import uk.ac.shef.dcs.oak.jate.util.counter.TermFreqCounter;
-
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import uk.ac.shef.dcs.oak.jate.util.counter.WordCounter;
 
 public class TestGlossEx extends Mapper<Text, Text, Text, Text> {
 
