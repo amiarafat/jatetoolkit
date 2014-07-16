@@ -1,5 +1,7 @@
 package uk.ac.shef.dcs.oak.jate.core.feature;
 
+import java.io.IOException;
+
 import uk.ac.shef.dcs.oak.jate.JATEException;
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndex;
 import uk.ac.shef.dcs.oak.jate.util.control.Normalizer;
@@ -33,7 +35,7 @@ public abstract class AbstractFeatureBuilder {
 		_normaliser = normaliser;
 	}
 
-	public abstract AbstractFeature build(GlobalIndex index) throws JATEException;
+	public abstract AbstractFeature build(GlobalIndex index) throws JATEException, IOException;
 
 
 }

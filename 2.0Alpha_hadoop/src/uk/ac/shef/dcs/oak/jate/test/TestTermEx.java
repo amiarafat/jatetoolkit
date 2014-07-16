@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
@@ -36,6 +37,8 @@ public class TestTermEx extends Mapper<Text, Text, Text, Text> {
 		byte[] fileContent = value.getBytes();
 		String fileContentString = new String(fileContent);
 		log.debug("file contents " + fileContentString);
+		Configuration conf = context.getConfiguration();
+		String refCorpusPath = conf.get("refCorpusPath");
 		try {
 
 			System.out.println("Started " + TestTermEx.class + "at: "
@@ -81,7 +84,7 @@ public class TestTermEx extends Mapper<Text, Text, Text, Text> {
 			FeatureCorpusTermFrequency wordFreq = new FeatureBuilderCorpusTermFrequency(
 					npcounter, wordcounter, lemmatizer).build(wordDocIndex);
 			FeatureRefCorpusTermFrequency bncRef = new FeatureBuilderRefCorpusTermFrequency(
-					fileContentString).build(null);
+					refCorpusPath).build(null);
 
 			AlgorithmTester tester = new AlgorithmTester();
 			tester.registerAlgorithm(new TermExAlgorithm(),
@@ -101,7 +104,7 @@ public class TestTermEx extends Mapper<Text, Text, Text, Text> {
 
 		TestTermExJob termExJob = new TestTermExJob();
 		try {
-			termExJob.runTermExJob(args[0], args[1]);
+			termExJob.runTermExJob(args[0], args[1], args[2]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

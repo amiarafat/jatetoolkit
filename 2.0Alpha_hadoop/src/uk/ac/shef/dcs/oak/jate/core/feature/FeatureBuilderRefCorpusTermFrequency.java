@@ -2,10 +2,16 @@ package uk.ac.shef.dcs.oak.jate.core.feature;
 
 import uk.ac.shef.dcs.oak.jate.core.feature.indexer.GlobalIndex;
 import uk.ac.shef.dcs.oak.jate.JATEException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * A specific type of feature builder that builds an instance of FeatureRefCorpusTermFrequency. This is a dummy class
@@ -21,17 +27,20 @@ public class FeatureBuilderRefCorpusTermFrequency extends AbstractFeatureBuilder
 
 	private static Logger _logger = Logger.getLogger(FeatureBuilderRefCorpusTermFrequency.class);
 
-	private final String _refStatsPath;
+	//private final String _refStatsPath;
+	
+	private Path _refCorpusPath = null;
 
 	/**
 	 * Default constructor
 	 * @param refStatsPath file path to the reference corpus statistics file. The file should store one term on a line, and in the format of:
+	 * It denotes a hdfs file path
 	 * <br>[freq_in_ref_corpus]   [term]
 	 * <br> Any terms with frequency < 2 will be ignored.
 	 */
-	public FeatureBuilderRefCorpusTermFrequency(String refStatsPath) {
+	public FeatureBuilderRefCorpusTermFrequency(String path) {
 		super(null, null, null);
-		_refStatsPath=refStatsPath;
+		_refCorpusPath = new Path(path);
 	}
 
 
@@ -42,12 +51,18 @@ public class FeatureBuilderRefCorpusTermFrequency extends AbstractFeatureBuilder
 	 * @param nullValue can be either an instance or null value
 	 * @return
 	 * @throws uk.ac.shef.dcs.oak.jate.JATEException
+	 * @throws IOException 
 	 */
-	public FeatureRefCorpusTermFrequency build(GlobalIndex nullValue) throws JATEException {
+	public FeatureRefCorpusTermFrequency build(GlobalIndex nullValue) throws JATEException, IOException {
 		FeatureRefCorpusTermFrequency _feature = new FeatureRefCorpusTermFrequency();
-
+//		Path pt = new Path(
+//				"hdfs://npvm11.np.wc1.yellowpages.com:9000/user/john/abc.txt");
+		FileSystem fs = FileSystem.get(new Configuration());
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				fs.open(_refCorpusPath)));
+		
 		try{
-			final BufferedReader reader = new BufferedReader(new FileReader(_refStatsPath));
+			//final BufferedReader reader = new BufferedReader(new FileReader(_refStatsPath));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				line = line.trim();

@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
@@ -34,6 +35,9 @@ public class TestGlossEx extends Mapper<Text, Text, Text, Text> {
 		byte[] fileContent = value.getBytes();
 		String fileContentString = new String(fileContent);
 		log.debug("file contents " + fileContentString);
+		Configuration conf = context.getConfiguration();
+		String refCorpusPath = conf.get("refCorpusPath");
+		
 		try {
 
 			System.out.println("Started " + TestGlossEx.class + "at: "
@@ -79,7 +83,7 @@ public class TestGlossEx extends Mapper<Text, Text, Text, Text> {
 			FeatureCorpusTermFrequency wordFreq = new FeatureBuilderCorpusTermFrequency(
 					npcounter, wordcounter, lemmatizer).build(wordDocIndex);
 			FeatureRefCorpusTermFrequency bncRef = new FeatureBuilderRefCorpusTermFrequency(
-					fileContentString).build(null);
+					refCorpusPath).build(null);
 
 			AlgorithmTester tester = new AlgorithmTester();
 			tester.registerAlgorithm(new GlossExAlgorithm(),
@@ -99,7 +103,7 @@ public class TestGlossEx extends Mapper<Text, Text, Text, Text> {
 
 		TestGlossExJob glossExJob = new TestGlossExJob();
 		try {
-			glossExJob.runGlossExJob(args[0], args[1]);
+			glossExJob.runGlossExJob(args[0], args[1], args[2]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -20,20 +20,21 @@ public class TestTermExJob extends Configured implements Tool {
 	@Override
 	public int run(String[] args) throws Exception {
 		Configuration conf = new Configuration();
+		conf.set("refCorpusPath", args[1]);
 		Job job = new Job(conf, "JateMRJob");
 		job.setJarByClass(TestTermExJob.class);
 		job.setMapperClass(TestTermEx.class);
 		job.setNumReduceTasks(0);
 		job.setInputFormatClass(WholeFileInputFormat.class);
 		FileInputFormat.addInputPath(job, new Path(args[0]));
-		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		FileOutputFormat.setOutputPath(job, new Path(args[2]));
 		log.info("Submitting the job to Mapper");
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 
-	public void runTermExJob(String inputPath, String outputPath)
-			throws Exception {
-		String jobArgs[] = new String[] { inputPath, outputPath };
+	public void runTermExJob(String inputPath, String refCorpusPath,
+			String outputPath) throws Exception {
+		String jobArgs[] = new String[] { inputPath, refCorpusPath, outputPath };
 		int exitCode;
 		try {
 			exitCode = ToolRunner.run(new TestTermExJob(), jobArgs);
