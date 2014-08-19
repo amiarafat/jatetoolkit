@@ -27,7 +27,6 @@ public class TestAverageCorpusTFJob extends Configured implements Tool {
 		job.setInputFormatClass(WholeFileInputFormat.class);
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
-		log.info("Submitting the job to Mapper");
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 

@@ -1,10 +1,15 @@
 package uk.ac.shef.dcs.oak.jate.model;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Iterator;
-import java.net.MalformedURLException;
-import java.io.File;
+import java.util.Set;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 
 /**
  * @author <a href="mailto:z.zhang@dcs.shef.ac.uk">Ziqi Zhang</a>
@@ -22,21 +27,38 @@ public class CorpusImpl implements Corpus {
 		return _docs.iterator();
 	}
 
-	public CorpusImpl(String path) {
-		//_docs = new HashSet<Document>();
-		File targetFolder = new File(path);
+	public CorpusImpl(String hdfsPath) {
+		_docs = new HashSet<Document>();
+		// File targetFolder = new File(path);
+		//
+		// File[] files = targetFolder.listFiles();
+		// for (File f : files) {
+		// try {
+		// this.add(new DocumentImpl(f.toURI().toURL()));
+		// } catch (MalformedURLException e) {
+		// e.printStackTrace();
+		// }
+		// }
 
-		if (!targetFolder.isDirectory()) {
-			this.add(new DocumentImpl(path));
-		}
-		/*File[] files = targetFolder.listFiles();
-		for (File f : files) {
-			try {
-				this.add(new DocumentImpl(f.toURI().toURL()));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
+		FileSystem fs;
+
+		try {
+			fs = FileSystem.get(new Configuration());
+			FileStatus[] status = fs.listStatus(new Path(hdfsPath));
+			
+			for (FileStatus fileStatus : status) {
+				System.out.println("**** file status "+fileStatus);
+				this.add(new DocumentImpl(fileStatus,fs));
 			}
-		}*/
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public boolean add(Document document) {

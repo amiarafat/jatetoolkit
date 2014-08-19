@@ -86,6 +86,7 @@ public class AlgorithmTester {
 				.entrySet()) {
 			_logger.info("Running feature store builder and ATR..."
 					+ en.getKey().toString());
+			System.out.println("******** executing on "+ en.getValue());
 			result = en.getKey().execute(en.getValue());
 			writer.output(result, context);
 		}

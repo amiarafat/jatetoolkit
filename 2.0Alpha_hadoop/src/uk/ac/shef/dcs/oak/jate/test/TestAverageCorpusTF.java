@@ -5,8 +5,10 @@ import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 import uk.ac.shef.dcs.oak.jate.JATEException;
 import uk.ac.shef.dcs.oak.jate.core.algorithm.AverageCorpusTFAlgorithm;
@@ -30,17 +32,17 @@ public class TestAverageCorpusTF extends Mapper<Text, Text, Text, Text> {
 	private static final Log log = LogFactory.getLog(TestChiSquare.class);
 
 	public void map(Text key, Text value, Context context) {
-		byte[] fileContent = value.getBytes();
-		String fileContentString = new String(fileContent);
-		log.debug("file contents " + fileContentString);
+
+		FileSplit inputSplit = (FileSplit) context.getInputSplit();
+
+		Path hdfsPath = inputSplit.getPath();
+
+		Path parent = hdfsPath.getParent();
+
 		try {
-			System.out.println("Started " + TestCValue.class + "at: "
+			System.out.println("Started " + TestAverageCorpusTF.class + "at: "
 					+ new Date()
 					+ "... For detailed progress see log file jate.log.");
-
-			// creates instances of required processors and resources
-
-			// creates instances of required processors and resources
 
 			// stop word list
 			StopList stop = new StopList(true);
@@ -63,7 +65,7 @@ public class TestAverageCorpusTF extends Mapper<Text, Text, Text, Text> {
 			GlobalIndexBuilderMem builder = new GlobalIndexBuilderMem();
 			// build the global resource index
 			GlobalIndexMem termDocIndex = builder.build(new CorpusImpl(
-					fileContentString), npextractor);
+					parent.toString()), npextractor);
 
 			// build a feature store required by the tfidf algorithm, using the
 			// processors instantiated above

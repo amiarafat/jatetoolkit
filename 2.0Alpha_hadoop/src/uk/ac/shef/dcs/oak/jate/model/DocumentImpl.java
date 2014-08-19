@@ -3,7 +3,12 @@ package uk.ac.shef.dcs.oak.jate.model;
 import uk.ac.shef.wit.commons.UtilFiles;
 
 import java.net.URL;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
 
 /**
  * @author <a href="mailto:z.zhang@dcs.shef.ac.uk">Ziqi Zhang</a>
@@ -13,6 +18,8 @@ public class DocumentImpl implements Document {
 
 	protected URL _url;
 	protected String fileContent;
+	protected FileStatus fileStatus;
+	private FileSystem fs;
 
 	public DocumentImpl(URL url) {
 		_url = url;
@@ -22,28 +29,55 @@ public class DocumentImpl implements Document {
 		this.fileContent = fileContent;
 	}
 
+	public DocumentImpl(FileStatus fileStatus, FileSystem fs) {
+		this.fileStatus = fileStatus;
+		this.fs = fs;
+	}
+
 	public URL getUrl() {
 		return _url;
 	}
 
 	public String getContent() {
+		// String content = null;
+		// try {
+		// content = UtilFiles.getContent(_url).toString();
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
 
-		
-		if (null == _url && fileContent != null) {
-			return fileContent;
-		}
-
-		String content = null;
+		BufferedReader br = null;
+		StringBuffer content = new StringBuffer();
 		try {
-			content = UtilFiles.getContent(_url).toString();
+			if (!getFileStatus().isDirectory()) {
+				br = new BufferedReader(new InputStreamReader(getFs().open(
+						getFileStatus().getPath())));
+				String line;
+				line = br.readLine();
+				content.append(line + "\n");
+				while (line != null) {
+					line = br.readLine();
+					content.append(line + "\n");
+				}
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (null != br)
+					br.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		return content;
+
+	//	System.out.println("file contens "+ content.toString());
+		return content.toString();
 	}
 
 	public String toString() {
-		return fileContent.toString();
+		return fileStatus.toString();
 	}
 
 	public boolean equals(Object o) {
@@ -53,11 +87,20 @@ public class DocumentImpl implements Document {
 			return false;
 		final DocumentImpl that = (DocumentImpl) o;
 
-		return that.getUrl().equals(getUrl());
+		return that.getFileStatus().equals(getFileStatus());
 
 	}
 
 	public int hashCode() {
-		return fileContent.hashCode();
+		return fileStatus.hashCode();
 	}
+
+	public FileStatus getFileStatus() {
+		return fileStatus;
+	}
+
+	public FileSystem getFs() {
+		return fs;
+	}
+
 }
